@@ -1,6 +1,7 @@
 const express=require('express')
 
 const userRouter=require('./routes/user.route.js')
+const authRouter=require('./routes/auth.route.js')
 const mongoose=require('mongoose')
 
 const dotenv=require('dotenv')
@@ -16,8 +17,10 @@ mongoose.connect(process.env.MONGO).then(()=>{
 })
 const app=express()
 
+app.use(express.json())
 
-app.use('/backend/user',userRouter)
+app.use('/api/user',userRouter)
+app.use('/api/auth',authRouter)
 
 
 app.listen(8000,()=>{
