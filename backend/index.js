@@ -22,6 +22,15 @@ app.use(express.json())
 app.use('/api/user',userRouter)
 app.use('/api/auth',authRouter)
 
+app.use((err,req,res,next)=>{
+    const statusCode=err.statusCode||500;
+    const errMessage=err.errMessage||"Internal server Error"
+    return res.status(statusCode).json({
+        success:false,
+        statusCode,
+        errMessage
+    })
+})
 
 app.listen(8000,()=>{
     console.log("Server running on port 8000!!!")
