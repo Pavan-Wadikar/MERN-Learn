@@ -8,7 +8,7 @@ const Signup = () => {
   const [loading,setLoading]=useState(false)
    const navigate=useNavigate();
 
-  const url="http://localhost:8000"
+  
   const handleChange=(e)=>{
     setFormData({
       ...formData,
@@ -20,7 +20,7 @@ const Signup = () => {
     e.preventDefault();
     try {
       setLoading(true)
-    const res= await fetch(`${url}/api/auth/signup`,{
+    const res= await fetch(`/api/auth/signup`,{
       method:'POST',
       headers:{
         'Content-Type':'application/json',
