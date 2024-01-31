@@ -3,10 +3,11 @@ const express=require('express')
 const userRouter=require('./routes/user.route.js')
 const authRouter=require('./routes/auth.route.js')
 const mongoose=require('mongoose')
-
+const cors=require('cors')
 const dotenv=require('dotenv')
 
 dotenv.config();
+
 
 
 
@@ -17,6 +18,10 @@ mongoose.connect(process.env.MONGO).then(()=>{
 })
 const app=express()
 
+app.use(
+    cors({
+      origin: '*'})
+  );
 app.use(express.json())
 
 app.use('/api/user',userRouter)
