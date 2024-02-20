@@ -1,4 +1,4 @@
-import { useState } from 'react'
+
 import { BrowserRouter,Route,Routes  } from 'react-router-dom';
 import Home from './pages/Home';
 import Signin from './pages/Signin';
@@ -6,12 +6,13 @@ import Signup from './pages/SignUp';
 import About from './pages/About';
 import Profile from './pages/Profile';
 import Header from './components/Header';
+import PrivateRoute from './components/PrivateRoute';
 
 
 
 function App() {
 
-  console.log("Hello World");
+  
 
   return (
     <BrowserRouter>
@@ -23,9 +24,10 @@ function App() {
         <Route path='/signup' element={<Signup/>}/>
 
         <Route path='/about' element={<About/>}/>
+        <Route element={<PrivateRoute/>}>
 
         <Route path='/profile' element={<Profile/>}/>
-
+        </Route>
       </Routes>
        
     </BrowserRouter>
